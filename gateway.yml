@@ -1,0 +1,13 @@
+---
+- hosts: server1
+  become: yes
+
+  tasks:
+  - name: installing nginx, redis-server, ufw
+    package:
+      name:
+        - "{{ ufw_package }}"
+        - "{{ redisserver_package }}"
+        - "{{ nginx_package }}"
+      update_cache: yes
+      state: latest
